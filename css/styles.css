@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 1;
+}
+
+.header {
+background: dodgerblue;
+color: navy;
+padding: 30px;
+}
+
+div.header {
+  text-align: center;
+  font-size: 30px;
+}
