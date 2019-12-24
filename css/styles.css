@@ -13,3 +13,23 @@ div.header {
   text-align: center;
   font-size: 30px;
 }
+
+#button {
+  padding: 15px;
+  font-size: 20px;
+  color: black;
+}
+
+#input {
+  padding: 15px;
+  font-size: 20px;
+}
+
+#body {
+  background-color: white;
+}
+
+#add-button {
+  text-align: center;
+  margin-top: 20px;
+}
