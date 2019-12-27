@@ -1,3 +1,146 @@
 window.onload = function() {
-    document.getElementById("button").onclick = test;
+
+  const setupEventListeners = function() {
+
+    let inputElement = document.getElementById("insert_button");
+    inputElement.addEventListener('click', function(){
+      let textInput = document.getElementById("textinput").value;
+        addItem(textInput);
+        displayTodos();
+    });
+
+    let todosUl = document.getElementById("list");
+    todosUl.addEventListener('click', function(event) {
+
+      let elementClicked = event.target;
+
+      if (elementClicked.className === 'bttn_delete') {
+        let pos = elementClicked.value;
+        deleteItem(pos);
+        displayTodos();
+      }
+      if (elementClicked.className === 'bttn_complete') {
+        let pos = elementClicked.value;
+        toggleComplete(pos);
+        displayTodos();
+      }
+      if (elementClicked.className === 'bttn_priority') {
+        let pos = elementClicked.value;
+        movePriority(pos);
+        displayTodos();
+      }
+
+    });
+  }
+
+  setupEventListeners();
+
+}
+
+let todos = [];
+
+const addItem = function(todo) {
+
+  todos.push({
+    todoText: todo,
+    highPriority: false,
+    completed: false
+  });
+
+  let textInput = document.getElementById("textinput");
+  textInput.value = '';
+}
+
+const deleteItem = function(pos) {
+    todos.splice(pos, 1);
+}
+
+const toggleComplete = function(pos) {
+  todos[pos].completed = !todos[pos].completed;
+}
+
+const movePriority = function(pos) {
+  todos[pos].highPriority = !todos[pos].highPriority;
+  let highPriority = todos[pos].highPriority;
+  if (highPriority) {
+    let temp = todos[pos];
+    todos.splice(pos, 1);
+    todos.unshift(temp);
+  } else {
+    let temp = todos[pos];
+    todos.splice(pos, 1);
+    todos.push(temp);
+  }
+}
+
+
+const displayTodos = function() {
+  let todosUl = document.getElementById("list");
+  todosUl.innerHTML = '';                        
+
+  todos.forEach((todo, pos) => {
+    let todoLi = document.createElement('li');
+    if (todos[pos].completed) {
+      todoLi.style.color = "#00aa00";
+      todoLi.style.textDecoration = "line-through";
+    }
+    todoLi.textContent += todo.todoText;
+    todoLi.prepend(createPriorityButton(pos));
+    todoLi.append(createCompleteImg(pos));
+    todoLi.append(createCompleteButton(pos));
+    todoLi.append(createDeleteButton(pos));
+
+    todosUl.append(todoLi);
+  });
+}
+
+const createDeleteButton = function (pos) {
+  let deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.className = 'bttn_delete';
+  deleteButton.value = pos;
+
+  return deleteButton;
+}
+
+const createCompleteButton = function (pos) {
+  let completeButton = document.createElement('button');
+  if (todos[pos].completed) {
+    completeButton.textContent = 'Mark incomplete';
+  }
+  else {
+    completeButton.textContent = 'Mark completed';
+  }
+
+  completeButton.className = 'bttn_complete';
+  completeButton.value = pos;
+
+  return completeButton;
+}
+const createCompleteImg = function (pos) {
+  let completeImg = document.createElement('img');
+
+  if (todos[pos].completed) {
+    completeImg.src = "checkcomplete.svg";
+  }
+  else {
+    completeImg.src = "checkincomplete.svg";
+  }
+
+  return completeImg;
+}
+
+const createPriorityButton = function (pos) {
+  let priorityButton = document.createElement('button');
+  if (todos[pos].highPriority) {
+    priorityButton.textContent = 'Mark Low Priority';
+  }
+  else {
+    priorityButton.textContent = 'Mark High Priority';
+  }
+
+  priorityButton.className = 'bttn_priority';
+  priorityButton.value = pos;
+
+  return priorityButton;
 }
