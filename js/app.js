@@ -6,6 +6,10 @@ window.onload = function() {
     inputElement.addEventListener('click', function(){
       let textInput = document.getElementById("textinput").value;
         addItem(textInput);
+        let checkbox = document.getElementById("checkbox1").checked;
+        if (checkbox) {
+          movePriority(todos.length - 1);
+        }
         displayTodos();
     });
 
@@ -87,7 +91,7 @@ const displayTodos = function() {
     todoLi.textContent += todo.todoText;
     todoLi.prepend(createPriorityImg(pos));
     todoLi.append(createCompleteImg(pos));
-    todoLi.append(createCompleteButton(pos));
+  //  todoLi.append(createCompleteButton(pos));
     todoLi.append(createDeleteImg(pos));
 
     todosUl.append(todoLi);
@@ -102,7 +106,7 @@ const createDeleteImg = function (pos) {
 
   return deleteImg;
 }
-
+/*
 const createCompleteButton = function (pos) {
   let completeButton = document.createElement('button');
   if (todos[pos].completed) {
@@ -116,15 +120,18 @@ const createCompleteButton = function (pos) {
   completeButton.value = pos;
 
   return completeButton;
-}
+} */
+
 const createCompleteImg = function (pos) {
   let completeImg = document.createElement('img');
+  completeImg.className = 'bttn_complete';
+  completeImg.value = pos;
 
   if (todos[pos].completed) {
-    completeImg.src = "checkcomplete.svg";
+    completeImg.src = "checkcomplete.jpg";
   }
   else {
-    completeImg.src = "checkincomplete.svg";
+    completeImg.src = "checkincomplete.png";
   }
 
   return completeImg;

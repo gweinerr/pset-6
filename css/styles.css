@@ -36,12 +36,20 @@ div.header {
 
 #list {
   padding: 15px;
-  font-size: 20px;
+  font-size: 30px;
   text-align: center;
 }
 
+img.bttn_priority {
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 60px;
+  height: 90px;
+}
+
 img {
-  padding: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
   width: 60px;
   height: 80px;
 }
