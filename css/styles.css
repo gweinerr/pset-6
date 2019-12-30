@@ -39,3 +39,8 @@ div.header {
   font-size: 20px;
   text-align: center;
 }
+
+img {
+  padding: 5px;
+  width: 100px;
+}
