@@ -76,7 +76,7 @@ const movePriority = function(pos) {
 
 const displayTodos = function() {
   let todosUl = document.getElementById("list");
-  todosUl.innerHTML = '';                        
+  todosUl.innerHTML = '';
 
   todos.forEach((todo, pos) => {
     let todoLi = document.createElement('li');
@@ -85,22 +85,22 @@ const displayTodos = function() {
       todoLi.style.textDecoration = "line-through";
     }
     todoLi.textContent += todo.todoText;
-    todoLi.prepend(createPriorityButton(pos));
+    todoLi.prepend(createPriorityImg(pos));
     todoLi.append(createCompleteImg(pos));
     todoLi.append(createCompleteButton(pos));
-    todoLi.append(createDeleteButton(pos));
+    todoLi.append(createDeleteImg(pos));
 
     todosUl.append(todoLi);
   });
 }
 
-const createDeleteButton = function (pos) {
-  let deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
-  deleteButton.className = 'bttn_delete';
-  deleteButton.value = pos;
+const createDeleteImg = function (pos) {
+  let deleteImg = document.createElement('img');
+  deleteImg.src = "delete.jpg";
+  deleteImg.className = 'bttn_delete';
+  deleteImg.value = pos;
 
-  return deleteButton;
+  return deleteImg;
 }
 
 const createCompleteButton = function (pos) {
@@ -130,17 +130,17 @@ const createCompleteImg = function (pos) {
   return completeImg;
 }
 
-const createPriorityButton = function (pos) {
-  let priorityButton = document.createElement('button');
+const createPriorityImg = function (pos) {
+  let priorityImg = document.createElement('img');
   if (todos[pos].highPriority) {
-    priorityButton.textContent = 'Mark Low Priority';
+    priorityImg.src = "urgent.jpg";
   }
   else {
-    priorityButton.textContent = 'Mark High Priority';
+    priorityImg.src = "notimportant.jpg";
   }
 
-  priorityButton.className = 'bttn_priority';
-  priorityButton.value = pos;
+  priorityImg.className = 'bttn_priority';
+  priorityImg.value = pos;
 
-  return priorityButton;
+  return priorityImg;
 }
