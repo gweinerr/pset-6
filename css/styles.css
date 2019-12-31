@@ -57,3 +57,7 @@ img {
 #checkbox1 {
   margin-top: 20px;
 }
+
+input.larger {
+  transform: scale(1.4);
+}
