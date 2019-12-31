@@ -47,9 +47,17 @@ img.bttn_priority {
   height: 90px;
 }
 
+img.bttn_delete {
+  padding-left: 10px;
+  padding-right: 0px;
+}
+
+img.bttn_complete {
+  padding-left: 50px;
+  padding-right: 10px;
+}
+
 img {
-  padding-left: 30px;
-  padding-right: 30px;
   width: 60px;
   height: 80px;
 }
