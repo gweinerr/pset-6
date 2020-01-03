@@ -91,7 +91,6 @@ const displayTodos = function() {
     todoLi.textContent += todo.todoText;
     todoLi.prepend(createPriorityImg(pos));
     todoLi.append(createCompleteImg(pos));
-  //  todoLi.append(createCompleteButton(pos));
     todoLi.append(createDeleteImg(pos));
 
     todosUl.append(todoLi);
@@ -106,21 +105,6 @@ const createDeleteImg = function (pos) {
 
   return deleteImg;
 }
-/*
-const createCompleteButton = function (pos) {
-  let completeButton = document.createElement('button');
-  if (todos[pos].completed) {
-    completeButton.textContent = 'Mark incomplete';
-  }
-  else {
-    completeButton.textContent = 'Mark completed';
-  }
-
-  completeButton.className = 'bttn_complete';
-  completeButton.value = pos;
-
-  return completeButton;
-} */
 
 const createCompleteImg = function (pos) {
   let completeImg = document.createElement('img');
