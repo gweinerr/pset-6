@@ -4,13 +4,17 @@ window.onload = function() {
 
     let inputElement = document.getElementById("insert_button");
     inputElement.addEventListener('click', function(){
-      let textInput = document.getElementById("textinput").value;
+       let textInput = document.getElementById("textinput").value;
+       if (textInput === null|| textInput === "") {
+
+       } else {
         addItem(textInput);
         let checkbox = document.getElementById("checkbox1").checked;
         if (checkbox) {
           movePriority(todos.length - 1);
         }
         displayTodos();
+      }
     });
 
     let todosUl = document.getElementById("list");
